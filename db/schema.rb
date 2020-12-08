@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_221659) do
+ActiveRecord::Schema.define(version: 2020_12_08_230142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ledgers", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "resource_id", null: false
+    t.integer "qty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_ledgers_on_project_id"
+    t.index ["resource_id"], name: "index_ledgers_on_resource_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -32,4 +42,6 @@ ActiveRecord::Schema.define(version: 2020_12_07_221659) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "ledgers", "projects"
+  add_foreign_key "ledgers", "resources"
 end
