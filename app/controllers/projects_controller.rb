@@ -5,12 +5,12 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
 
-    render json: @projects
+    render json: @projects.to_json(include: :resources)
   end
 
   # GET /projects/1
   def show
-    render json: @project
+    render json: @project.to_json(include: :resources)
   end
 
   # POST /projects

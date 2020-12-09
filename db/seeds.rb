@@ -14,7 +14,8 @@ Project.create([
 
 Resource.create([
     {name: "light bulb", resource_type: "material", own: true, price: 0},
-    {name: "gloves", resource_type: "tool", own: true, price: 0},{name: "ladder", resource_type: "tool", own: false, price: 100},
+    {name: "gloves", resource_type: "tool", own: true, price: 0},
+    {name: "ladder", resource_type: "tool", own: false, price: 100},
     {name: "painters plastic", resource_type: "material", own: false , price: 15 },
     {name: "sandpaper", resource_type: "material", own: true, price: 0},
     {name: "drywall compund", resource_type: "material", own: true , price: 0 },
@@ -24,3 +25,5 @@ Resource.create([
     {name: "roller pan", resource_type: "tool", own: false, price: 12},
     {name: "paint", resource_type: "material", own: false , price: 40 },
 ])
+
+# 3
