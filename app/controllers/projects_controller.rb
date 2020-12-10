@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :destroy]
+  before_action :authorized
 
-  # GET /projects
-  def index
-    @projects = Project.all
+ # GET /projects
+ def index
+  @projects = Project.where user_id: @user.id
 
     render json: @projects.to_json(include: :resources)
   end
@@ -16,6 +17,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   def create
     @project = Project.new(project_params)
+    @project.user_id = @user.id
 
     if @project.save
       render json: @project, status: :created, location: @project
